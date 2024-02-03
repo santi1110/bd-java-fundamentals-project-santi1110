@@ -4,6 +4,7 @@ import main.com.adventure.settings.Command;
 import main.com.adventure.settings.CommandConstants;
 
 import java.util.Locale;
+import java.util.Scanner;
 
 public class GameInputProcessor {
 
@@ -12,8 +13,11 @@ public class GameInputProcessor {
      * @return the response from the user.
      */
     public String prompt() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your next command:");
-        return "";
+        String output = scanner.nextLine();
+        System.out.println(output);
+        return output;
     }
 
     /**
@@ -29,7 +33,9 @@ public class GameInputProcessor {
      * @return - the Command object with the proper verb and blank object
      */
     private Command buildSimpleCommand(String input) {
-        return new Command("");
+        int blankspace = input.indexOf(" ");
+        String verb1 = input.substring(0, blankspace);
+        return new Command(verb1, "");
     }
 
     /**
@@ -52,7 +58,24 @@ public class GameInputProcessor {
      * @return - the Command object with the proper verb and object
      */
     private Command buildCommandWithObject(String input) {
-        return new Command("", "");
+        int blankspace = input.indexOf(" ");
+        String verb ;
+        String object ;
+        if (blankspace == -1) {
+            System.out.println("Bad input");
+            object = "";
+            verb = input;
+        } else {
+            verb = input.substring(0, blankspace);
+            if (blankspace < input.length() - 1) {
+                object = input.substring(blankspace + 1, input.length());
+            } else {
+                System.out.println("bad input");
+                verb = input;
+                object = "";
+            }
+        }
+        return new Command(verb, object);
     }
 
 

@@ -22,7 +22,7 @@ public class Player {
      * @param newName - the player's name that will be saved
      */
     public void setName(String newName) {
-
+        System.out.println("Your name is now " + newName);
     }
 
     /**
@@ -32,8 +32,7 @@ public class Player {
      * @return The name of the player
      */
     public String getName() {
-        return "";
-    }
+        return "santi" ; }
 
     /**
      * Sprint 1 Module 3
@@ -68,9 +67,19 @@ public class Player {
      * @return true if the move is executed. Otherwise, false.
      */
     public boolean move(String direction, boolean isValidDirection) {
-        return true;
+        if (isValidDirection) {
+            if ("EAST".equals(direction)) {
+                currentLocationIndex++;
+                return true;
+            } else if ("WEST".equals(direction)) {
+                currentLocationIndex--;
+                return true;
+            }
+        } else {
+            System.out.println(direction + " is not a valid direction") ;
+        }
+        return false;
     }
-
     /**
      * Sprint 3 Module 1
      * Will increase the players power to the power of the item that is passed in.
