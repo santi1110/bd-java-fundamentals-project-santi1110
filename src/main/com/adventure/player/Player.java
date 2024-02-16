@@ -1,5 +1,4 @@
 package main.com.adventure.player;
-
 import main.com.adventure.settings.AppSettings;
 import main.com.adventure.world.objects.Shovel;
 import main.com.adventure.world.objects.Tangible;
