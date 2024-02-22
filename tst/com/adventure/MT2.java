@@ -28,7 +28,7 @@ class MT2 {
     @Test
     void canOpenDoor() {
         checkPlayerLevel();
-        assertEquals(false, player.canOpenDoor(), "The player should be able to open the door at level " + player.level);
+        assertEquals(true, player.canOpenDoor(), "The player should be able to open the door at level " + player.level);
         checkPlayerLevel();
 
         player.level = 4;
@@ -38,15 +38,15 @@ class MT2 {
         assertEquals(false, player.canOpenDoor(), "The player should not be able to open the door at level " + player.level);
 
         player.level = 10;
-        assertEquals(false, player.canOpenDoor(), "The player should be able to open the door at level " + player.level);
+        assertEquals(true, player.canOpenDoor(), "The player should be able to open the door at level " + player.level);
     }
 
     @Test
-    private void setName() {
+    void setName() {
         assertTrue(player.getName() == null || player.getName().isBlank(), "The player's name should start as a blank or null string.");
-        String testName = "";
+        String testName = "Test name";
         player.setName(testName);
-        assertEquals("", player.getName());
+        assertEquals(testName, player.getName());
         assertEquals(String.format("Your name is now %s", testName), outContent.toString().trim());
     }
 }

@@ -138,6 +138,7 @@ public class GameController {
             case TAKE:
                 break;
             case INVENTORY:
+                player.printItems();
                 break;
             default:
                 break;
