@@ -117,29 +117,34 @@ public class GameController {
         }
 
         Command command = inputProcessor.getNextCommand();
-        applyCommand(command);
+        applyCommand(inputProcessor.getNextCommand().getVerb());
         getNextCommand();
     }
 
-    private void applyCommand(Command command) {
-        if (command.getVerb().equalsIgnoreCase(CommandConstants.LOOK)) {
-            describeCurrentScene();
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.MOVE)) {
-            move(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.HELP)) {
-            printHelp();
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.USE)) {
-            use(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.DIG)) {
-            dig();
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.EXAMINE)) {
-            examine(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.TAKE)) {
-            take(command.getObjectName());
-        } else {
-            printInvalidCommand();
+    private void applyCommand(CommandVerb command) {
+        switch (command) {
+            case LOOK:
+                break;
+            case MOVE:
+                break;
+            case HELP:
+                break;
+            case USE:
+                break;
+            case DIG:
+                break;
+            case EXAMINE:
+                break;
+            case TAKE:
+                break;
+            case INVENTORY:
+                break;
+            default:
+                break;
         }
     }
+
+
 
     private void startCombat() {
         if (!(getCurrentScene() instanceof IMonsterScene)) {
