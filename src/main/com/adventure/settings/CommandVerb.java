@@ -1,4 +1,6 @@
 package main.com.adventure.settings;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Sprint 2 Module 3
@@ -25,28 +27,26 @@ public enum CommandVerb {
      * @param verbString - the verb from the user input
      * @return - the CommandVerb associated with the given input.
      */
+    public static final Map<String, CommandVerb> verbMap = new HashMap<>();
+    static {
+        verbMap.put("TAKE", TAKE);
+        verbMap.put("MOVE", MOVE);
+        verbMap.put("USE", USE);
+        verbMap.put("DIG", DIG);
+        verbMap.put("EXAMINE", EXAMINE);
+        verbMap.put("LOOK", LOOK);
+        verbMap.put("HELP", HELP);
+        verbMap.put("FIGHT", FIGHT);
+        verbMap.put("INVENTORY", INVENTORY);
+    }
+
+    /**
+     *
+     * @param verbString the case to check
+     * @return verMap
+     */
     public static CommandVerb getVerb(String verbString) {
-        switch (verbString.toUpperCase()) {
-            case "TAKE":
-                return TAKE;
-            case "MOVE":
-                return MOVE;
-            case "USE":
-                return USE;
-            case "DIG":
-                return DIG;
-            case "EXAMINE":
-                return EXAMINE;
-            case "LOOK":
-                return LOOK;
-            case "HELP":
-                return HELP;
-            case "FIGHT":
-                return FIGHT;
-            case "INVENTORY":
-                return INVENTORY;
-            default:
-                return INVALID;
-        }
+        return verbMap.getOrDefault(verbString.toUpperCase(), INVALID);
     }
 }
+
