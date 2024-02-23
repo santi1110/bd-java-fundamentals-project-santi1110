@@ -9,7 +9,7 @@ public class Player {
     public int level = 5;
     private String name;
     private int currentLocationIndex = AppSettings.getStartingLocation();
-    private Backpack backpack;
+    private Backpack backpack  = new Backpack();
     private int power = 1;
     private int health = 10;
 
